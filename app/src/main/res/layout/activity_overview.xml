@@ -8,14 +8,15 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="310dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="324dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="28dp"
         android:background="@android:color/holo_green_dark"
         android:text="Confirm Overview"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -73,14 +74,16 @@
         tools:layout_editor_absoluteY="36dp" />
 
     <ScrollView
-        android:background="?android:attr/colorBackground"
-
         android:layout_width="324dp"
+
         android:layout_height="126dp"
+        android:background="?android:attr/colorBackground"
         android:clipToPadding="false"
         android:fillViewport="false"
         android:scrollbarStyle="insideInset"
-        tools:layout_editor_absoluteX="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="323dp">
 
         <LinearLayout
@@ -98,18 +101,18 @@
         tools:layout_editor_absoluteY="250dp" />
 
     <TextView
-        android:background="?android:attr/colorBackground"
         android:id="@+id/textView11"
         android:layout_width="147dp"
         android:layout_height="21dp"
+        android:background="?android:attr/colorBackground"
         tools:layout_editor_absoluteX="93dp"
         tools:layout_editor_absoluteY="249dp" />
 
     <TextView
-        android:background="?android:attr/colorBackground"
         android:id="@+id/textView13"
         android:layout_width="147dp"
         android:layout_height="21dp"
+        android:background="?android:attr/colorBackground"
         tools:layout_editor_absoluteX="93dp"
         tools:layout_editor_absoluteY="208dp" />
 
@@ -120,4 +123,18 @@
         android:text="City"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="208dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Settings Overview"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
