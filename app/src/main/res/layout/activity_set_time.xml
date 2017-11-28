@@ -21,14 +21,27 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="310dp"
-        android:layout_height="27dp"
-        android:layout_marginBottom="7dp"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/holo_red_dark"
+        android:text="Remove Time"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button13" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="10dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Add Time"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/listView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -92,86 +105,10 @@
         android:layout_height="71dp"
         android:layout_marginEnd="51dp"
         android:layout_marginStart="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="118dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="39dp"
-        android:text="Wednesday"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton7"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="117dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="39dp"
-        android:text="Tuesday"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton6"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:layout_marginEnd="130dp"
-        android:text="Thursday"
-        app:layout_constraintBottom_toTopOf="@+id/radioButton5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton4" />
-
-    <RadioButton
-        android:id="@+id/radioButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="41dp"
-        android:layout_marginEnd="51dp"
-        android:text="Sunday"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioButton6" />
-
-    <RadioButton
-        android:id="@+id/radioButton7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:layout_marginEnd="154dp"
-        android:text="Friday"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
-
-    <RadioButton
-        android:id="@+id/radioButton6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:text="Thursday"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton5"
-        app:layout_constraintStart_toEndOf="@+id/radioButton3"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
-
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="118dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="39dp"
-        android:text="Monday"
-        app:layout_constraintEnd_toStartOf="@+id/radioButton2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker3" />
+        tools:layout_editor_absoluteY="172dp" />
 
     <ListView
         android:id="@+id/listView"
@@ -183,5 +120,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wednesday"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="319dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tuesday"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunday"
+        tools:layout_editor_absoluteX="277dp"
+        tools:layout_editor_absoluteY="287dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saturday"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="316dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Friday"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="284dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thursday"
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="252dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Monday"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="252dp" />
 
 </android.support.constraint.ConstraintLayout>
