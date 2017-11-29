@@ -22,53 +22,28 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="150dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="30dp"
         android:background="@android:color/holo_red_dark"
         android:text="Remove Time"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button13" />
+        app:layout_constraintStart_toEndOf="@+id/button13"
+        tools:layout_editor_absoluteY="244dp" />
 
     <Button
         android:id="@+id/button13"
         android:layout_width="150dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="30dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Add Time"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="263dp"
-        android:layout_height="32dp"
-        android:text="To"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/timePicker"
-        app:layout_constraintStart_toEndOf="@+id/timePicker"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="262dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="4dp"
-        android:text="From"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/timePicker"
-        app:layout_constraintStart_toEndOf="@+id/timePicker"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="244dp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -87,94 +62,82 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="282dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginStart="51dp"
-        app:layout_constraintBottom_toTopOf="@+id/timePicker3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TimePicker
-        android:id="@+id/timePicker3"
-        android:layout_width="282dp"
-        android:layout_height="71dp"
-        android:layout_marginEnd="51dp"
-        android:layout_marginStart="51dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="172dp" />
-
     <ListView
         android:id="@+id/listView"
-        android:layout_width="310dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="11dp"
+        android:layout_width="357dp"
+        android:layout_height="176dp"
+        android:layout_marginBottom="12dp"
         android:background="?android:attr/colorBackground"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wednesday"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="319dp" />
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="43dp"
+        android:layout_height="90dp"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="75dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tuesday"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="284dp" />
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="73dp"
+        android:layout_height="56dp"
+        android:text="Choose a day"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="179dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox5"
+    <TextView
+        android:id="@+id/textView34"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sunday"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="287dp" />
+        android:text="FROM"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="107dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox10"
+    <TextView
+        android:id="@+id/textView33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saturday"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="316dp" />
+        android:text="TO"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="107dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Friday"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="284dp" />
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="80dp"
+        android:layout_height="29dp"
+        android:text="hh:00"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="243dp"
+        tools:layout_editor_absoluteY="107dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox8"
+    <TextView
+        android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thursday"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="252dp" />
+        android:text=":00"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="107dp" />
 
-    <CheckBox
-        android:id="@+id/checkBox7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Monday"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="252dp" />
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="194dp"
+        android:layout_height="32dp"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="190dp" />
 
 </android.support.constraint.ConstraintLayout>
