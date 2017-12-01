@@ -7,7 +7,7 @@
     tools:context="com.example.davidmoz.sportsapp.OverviewActivity">
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/buttonConfirmOverview"
         android:layout_width="324dp"
         android:layout_height="31dp"
         android:layout_marginBottom="28dp"
@@ -20,120 +20,179 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonChangeTime"
         android:layout_width="81dp"
         android:layout_height="34dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="88dp"
         android:text="Change"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="281dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewChoosenTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedLocation" />
 
     <TextView
-        android:id="@+id/textView7"
-        android:layout_width="241dp"
-        android:layout_height="27dp"
-        android:text="Selected times availabe in the week"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="288dp" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="241dp"
-        android:layout_height="27dp"
-        android:text="Selected City to play at"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="169dp" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="241dp"
-        android:layout_height="27dp"
-        android:text="Selected Sports"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="43dp" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="81dp"
-        android:layout_height="34dp"
-        android:text="Change"
-        android:textSize="14sp"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="162dp" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="81dp"
-        android:layout_height="34dp"
-        android:text="Change"
-        android:textSize="14sp"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="36dp" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="State"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="250dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="147dp"
-        android:layout_height="21dp"
-        android:background="?android:attr/colorBackground"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="249dp" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="147dp"
-        android:layout_height="21dp"
-        android:background="?android:attr/colorBackground"
-        tools:layout_editor_absoluteX="93dp"
-        tools:layout_editor_absoluteY="208dp" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="City"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="208dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="Settings Overview"
-        android:textColor="@android:color/holo_green_dark"
+        android:id="@+id/textViewSelectedTime"
+        android:layout_width="233dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginStart="40dp"
+        android:text="Selected Times Slots"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/listViewChoosenTime"
+        app:layout_constraintEnd_toStartOf="@+id/buttonChangeTime"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSelectedLocation"
+        android:layout_width="241dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginStart="37dp"
+        android:text="Selected Location"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewCityName"
+        app:layout_constraintEnd_toStartOf="@+id/buttonChangeLocation"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSelectedSports"
+        android:layout_width="241dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="15dp"
+        android:text="Selected Sports"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/buttonChangeSports"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSettingsOverview" />
+
+    <Button
+        android:id="@+id/buttonChangeLocation"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="92dp"
+        android:layout_marginEnd="30dp"
+        android:text="Change"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonChangeTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSelectedLocation" />
+
+    <Button
+        android:id="@+id/buttonChangeSports"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="51dp"
+        android:text="Change"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="127dp"
-        android:layout_height="49dp"
-        android:text="Selected Sport"
-        android:gravity="center"
-        android:textAlignment="center"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:id="@+id/textViewStateStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="37dp"
+        android:text="State"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSelectedTime"
+        app:layout_constraintEnd_toStartOf="@+id/textViewStateName"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewStateName"
+        android:layout_width="147dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="144dp"
+        android:background="?android:attr/colorBackground"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSelectedTime"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewCityName"
+        android:layout_width="147dp"
+        android:layout_height="21dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginStart="31dp"
+        android:background="?android:attr/colorBackground"
+        app:layout_constraintBottom_toTopOf="@+id/textViewStateName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewCityStatus" />
+
+    <TextView
+        android:id="@+id/textViewCityStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="9dp"
+        android:text="City"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewStateStatus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedLocation" />
+
+    <TextView
+        android:id="@+id/textViewSettingsOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="110dp"
+        android:layout_marginStart="111dp"
+        android:layout_marginTop="9dp"
+        android:text="Settings Overview"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:layout_width="326dp"
-        android:layout_height="118dp"
+        android:id="@+id/listViewChoosenTime"
+        android:layout_width="327dp"
+        android:layout_height="121dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="32dp"
         android:background="?android:attr/colorBackground"
         android:scrollbars="horizontal"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="329dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmOverview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewRequiredTime"
+        android:layout_width="122dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:text="Required Time"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="92dp" />
+
+    <TextView
+        android:id="@+id/textViewSelectedSport"
+        android:layout_width="122dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:text="Selected Sport"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="62dp"
+        tools:layout_editor_absoluteY="92dp" />
 </android.support.constraint.ConstraintLayout>

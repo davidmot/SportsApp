@@ -7,120 +7,155 @@
     tools:context="com.example.davidmoz.sportsapp.CSportActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextState"
         android:layout_width="287dp"
         android:layout_height="35dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="36dp"
         android:ems="10"
         android:hint="Enter State"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="376dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmCSport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextCity"
         android:layout_width="287dp"
         android:layout_height="35dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="36dp"
         android:ems="10"
         android:hint="Enter City"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="327dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewLocation"
         android:layout_width="287dp"
         android:layout_height="44dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="36dp"
         android:text="Where (City) you wanna play ?"
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="265dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextCity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewSportInfo"
         android:layout_width="287dp"
-        android:layout_height="44dp"
-        android:text="What sport do you wanna play ?"
+        android:layout_height="51dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="28dp"
+        android:text="Please choose the one sport you would like to play "
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="54dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonConfirmCSport"
         android:layout_width="287dp"
         android:layout_height="44dp"
+        android:layout_marginBottom="39dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="36dp"
         android:background="@android:color/holo_green_light"
         android:text="Confirm"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="436dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/radioButtonChess"
         android:layout_width="180dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="36dp"
         android:text="   Chess"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewLocation"
+        app:layout_constraintEnd_toStartOf="@+id/textViewTimeChess"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
+        android:id="@+id/radioButtonGolf"
         android:layout_width="180dp"
         android:layout_height="40dp"
+        android:layout_marginStart="36dp"
         android:text="   Golf "
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="138dp" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
-        android:text="   Tennis"
-        android:textSize="18sp"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="98dp" />
+        app:layout_constraintBottom_toTopOf="@+id/radioButtonChess"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/textViewTimeChess"
         android:layout_width="106dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginStart="1dp"
         android:gravity="center"
         android:text="(Time 3 Hours)"
         android:textAlignment="textEnd"
         android:textSize="16sp"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="178dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonChess" />
 
     <TextView
-        android:id="@+id/textView30"
+        android:id="@+id/textViewTimeGolf"
         android:layout_width="106dp"
         android:layout_height="40dp"
+        android:layout_marginEnd="61dp"
         android:gravity="center"
         android:text="(Time 2 Hours)"
         android:textAlignment="textEnd"
         android:textSize="16sp"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="138dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewTimeChess"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioButton
+        android:id="@+id/radioButtonTennis"
+        android:layout_width="180dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginStart="36dp"
+        android:text="   Tennis"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioButtonGolf"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/textView"
         android:layout_width="106dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="62dp"
         android:gravity="center"
-        android:text="(Time  1 Hour)"
-        android:textAlignment="textEnd"
+        android:text="(Time 1 Hour)"
+        android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="italic"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="98dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewTimeGolf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioButtonTennis" />
 
 </android.support.constraint.ConstraintLayout>

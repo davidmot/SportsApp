@@ -7,7 +7,7 @@
     tools:context="com.example.davidmoz.sportsapp.MainLogIn">
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/buttonForgotPassword"
         android:layout_width="265dp"
         android:layout_height="40dp"
         android:layout_marginBottom="96dp"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonRegister2"
+        android:id="@+id/buttonRegister"
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_marginBottom="153dp"
@@ -30,12 +30,12 @@
         android:background="@android:color/holo_green_dark"
         android:text="Register Here"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLogIn2"
+        app:layout_constraintEnd_toStartOf="@+id/buttonLogIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
     <Button
-        android:id="@+id/buttonLogIn2"
+        android:id="@+id/buttonLogIn"
         android:layout_width="145dp"
         android:layout_height="45dp"
         android:layout_marginBottom="153dp"
@@ -57,7 +57,7 @@
         android:inputType="none|textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewWelcome" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
@@ -90,7 +90,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageButtonLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

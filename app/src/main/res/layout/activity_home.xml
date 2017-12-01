@@ -11,6 +11,7 @@
         android:layout_width="173dp"
         android:layout_height="28dp"
         android:text="Pending Matches"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="26dp"
@@ -64,6 +65,7 @@
         android:layout_width="173dp"
         android:layout_height="30dp"
         android:text="Confirm Matches here"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="26dp"
@@ -71,9 +73,10 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="260dp"
+        android:layout_width="173dp"
         android:layout_height="28dp"
         android:text="Upcoming Matches"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="26dp"
@@ -91,6 +94,16 @@
 
     <Button
         android:id="@+id/button16"
+        android:layout_width="80dp"
+        android:layout_height="32dp"
+        android:background="@android:color/holo_red_light"
+        android:text="Cancel"
+        android:textSize="14sp"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="107dp" />
+
+    <Button
+        android:id="@+id/button18"
         android:layout_width="80dp"
         android:layout_height="32dp"
         android:background="@android:color/holo_red_light"
