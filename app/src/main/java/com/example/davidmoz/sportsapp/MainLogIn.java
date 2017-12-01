@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainLogIn extends Activity implements View.OnClickListener {
-    private Button buttonLogin, buttonRegister, buttonForgotPassword;
+    private Button buttonLogin, buttonRegister;
     private EditText editTextEmail, editTextPassword;
 
     private FirebaseAuth mAuth;
@@ -94,7 +94,6 @@ public class MainLogIn extends Activity implements View.OnClickListener {
                 } else {
                     Toast.makeText(MainLogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     goToMenu();
-
                 }
 
             }
@@ -104,7 +103,5 @@ public class MainLogIn extends Activity implements View.OnClickListener {
     public void goToMenu() {
         Intent intentgoBackMenu = new Intent(this, HomeActivity.class);
         this.startActivity(intentgoBackMenu);
-
-
     }
 }

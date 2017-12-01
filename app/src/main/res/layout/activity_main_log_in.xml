@@ -7,19 +7,6 @@
     tools:context="com.example.davidmoz.sportsapp.MainLogIn">
 
     <Button
-        android:id="@+id/buttonForgotPassword"
-        android:layout_width="265dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="96dp"
-        android:background="@color/common_google_signin_btn_text_dark_default"
-        android:text="Forgot Pasword?"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/buttonRegister"
         android:layout_width="145dp"
         android:layout_height="45dp"

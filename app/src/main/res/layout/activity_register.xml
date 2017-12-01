@@ -20,29 +20,30 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextBirthDate"
+        android:id="@+id/Birthday"
         android:layout_width="277dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="43dp"
-        android:ems="10"
-        android:hint="Birthday - MM/DD/YYYY"
-        android:inputType="textPersonName"
+        android:layout_height="38dp"
+        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginStart="54dp"
+        android:clickable="true"
+        android:editable="false"
+        android:hint="Please Enter Birthday"
         app:layout_constraintBottom_toTopOf="@+id/textViewLogIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextLastName"
         android:layout_width="277dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="9dp"
         android:layout_marginEnd="53dp"
         android:layout_marginStart="54dp"
         android:ems="10"
         android:hint="Please Enter Lastname"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextBirthDate"
+        app:layout_constraintBottom_toTopOf="@+id/Birthday"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

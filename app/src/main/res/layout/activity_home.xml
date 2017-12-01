@@ -10,143 +10,165 @@
         android:id="@+id/textView36"
         android:layout_width="173dp"
         android:layout_height="28dp"
+        android:layout_marginStart="26dp"
         android:text="Pending Matches"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewPending"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAcceptPending"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
+        android:id="@+id/listViewConfirm"
         android:layout_width="333dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="26dp"
         android:background="?android:attr/colorButtonNormal"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="277dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancelPending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
+        android:id="@+id/listViewPending"
         android:layout_width="333dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="26dp"
         android:background="?android:attr/colorButtonNormal"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="415dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ListView
+        android:id="@+id/listViewUpcoming"
         android:layout_width="333dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="26dp"
         android:background="?android:attr/colorButtonNormal"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="139dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textViewHello"
         android:layout_width="212dp"
         android:layout_height="40dp"
+        android:layout_marginBottom="57dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginStart="25dp"
         android:background="@android:color/holo_green_light"
         android:gravity="center"
         android:text="  Hello, XYZ "
         android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/buttonChangeSettings"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttonChangeSettings"
         android:layout_width="122dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="37dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:text="Change Settings"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonCancelUpcoming"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="173dp"
         android:layout_height="30dp"
+        android:layout_marginStart="26dp"
         android:text="Confirm Matches here"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewConfirm"
+        app:layout_constraintEnd_toStartOf="@+id/buttonConfirmMatches"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="173dp"
         android:layout_height="28dp"
+        android:layout_marginStart="26dp"
         android:text="Upcoming Matches"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="113dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewUpcoming"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/buttonCancelPending"
         android:layout_width="80dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="25dp"
         android:background="@android:color/holo_red_light"
         android:text="Decline"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="383dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewPending"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonAcceptPending" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/buttonCancelUpcoming"
         android:layout_width="80dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="80dp"
         android:background="@android:color/holo_red_light"
         android:text="Cancel"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="107dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewUpcoming"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView17" />
 
     <Button
-        android:id="@+id/button18"
+        android:id="@+id/buttonCancelConfirmMatches"
         android:layout_width="80dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_red_light"
         android:text="Cancel"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="279dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listViewUpcoming" />
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/buttonConfirmMatches"
         android:layout_width="80dp"
         android:layout_height="32dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/holo_green_light"
         android:text="Confirm"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="199dp"
-        tools:layout_editor_absoluteY="247dp" />
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelConfirmMatches"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/listViewUpcoming" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/buttonAcceptPending"
         android:layout_width="80dp"
         android:layout_height="32dp"
         android:background="@android:color/holo_green_light"
         android:text="Accept"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="199dp"
-        tools:layout_editor_absoluteY="383dp" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="37dp"
-        android:layout_height="28dp"
-        app:srcCompat="@android:drawable/ic_menu_help"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="70dp" />
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="121dp"
-        android:layout_height="31dp"
-        android:text="Need Instructions ? Click the Button"
-        android:textAlignment="center"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="70dp" />
+        app:layout_constraintBottom_toTopOf="@+id/listViewPending"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancelPending"
+        app:layout_constraintStart_toEndOf="@+id/textView36" />
 
 </android.support.constraint.ConstraintLayout>

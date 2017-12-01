@@ -5,9 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class OverviewActivity extends Activity implements View.OnClickListener {
-    private Button buttonConfirmOverview;
+
+
+    private Button buttonConfirmOverview, buttonChangeLocation, buttonChangeSports, buttonChangeTime;
+    private TextView textViewSelectedSport, textViewRequiredTime, textViewCityName, textViewStateName;
+    private ListView listViewChoosenTime;
 
 
     @Override
@@ -15,9 +22,25 @@ public class OverviewActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
 
+        textViewSelectedSport=(TextView) findViewById(R.id.textViewSelectedSport);
+        textViewRequiredTime=(TextView) findViewById(R.id.textViewRequiredTime);
+        textViewCityName=(TextView) findViewById(R.id.textViewCityName);
+        textViewStateName=(TextView) findViewById(R.id.textViewStateName);
+
+        listViewChoosenTime=(ListView)findViewById(R.id.listViewChoosenTime);
+
+
+        buttonChangeSports=(Button) findViewById(R.id.buttonChangeSports);
+        buttonChangeSports.setOnClickListener(this);
+
+        buttonChangeLocation=(Button)findViewById(R.id.buttonChangeLocation);
+        buttonChangeLocation.setOnClickListener(this);
+
+        buttonChangeTime=(Button) findViewById(R.id.buttonChangeTime);
+        buttonChangeTime.setOnClickListener(this);
+
         buttonConfirmOverview = (Button) findViewById(R.id.buttonConfirmOverview);
         buttonConfirmOverview.setOnClickListener(this);
-
 
     }
 
