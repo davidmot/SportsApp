@@ -86,6 +86,7 @@ public class MainLogIn extends Activity implements View.OnClickListener {
     }
 
     public void signIn(String email, String password) {
+
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -95,13 +96,12 @@ public class MainLogIn extends Activity implements View.OnClickListener {
                     Toast.makeText(MainLogIn.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     goToMenu();
                 }
-
             }
         });
     }
 
     public void goToMenu() {
-        Intent intentgoBackMenu = new Intent(this, HomeActivity.class);
-        this.startActivity(intentgoBackMenu);
+        Intent intentgoMenu = new Intent(this, OverviewActivity.class);
+        this.startActivity(intentgoMenu);
     }
 }

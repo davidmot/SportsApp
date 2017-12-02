@@ -3,6 +3,8 @@ package com.example.davidmoz.sportsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +39,16 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         this.startActivity(intentgoToTime);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuHome = getMenuInflater();
+        menuHome.inflate(R.menu.mainmenu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
