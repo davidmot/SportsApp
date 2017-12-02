@@ -3,39 +3,41 @@ package com.example.davidmoz.sportsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
+import android.widget.TextView;
 
-public class CSportActivity extends Activity implements View.OnClickListener {
-    private Button buttonConfirmCSport;
-    private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
-    private EditText editTextState, editTextCity;
+public class HomeInstructionsActivity extends Activity implements View.OnClickListener {
+    private TextView textViewHelloInstructions;
+    private Button buttonUnderstand;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_csport);
+        setContentView(R.layout.activity_home_instructions);
 
-        radioButtonGolf=(RadioButton) findViewById(R.id.radioButtonGolf);
-        radioButtonChess=(RadioButton) findViewById(R.id.radioButtonChess);
-        radioButtonTennis=(RadioButton)findViewById(R.id.radioButtonTennis);
+        textViewHelloInstructions=(TextView)findViewById(R.id.textViewHello);
+        buttonUnderstand=(Button)findViewById(R.id.buttonUnderstand);
 
-        editTextCity = (EditText)findViewById(R.id.editTextCity);
-        editTextState=(EditText) findViewById(R.id.editTextState);
-
-        buttonConfirmCSport=(Button) findViewById(R.id.buttonConfirmCSport);
-
-        buttonConfirmCSport.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intentgoToTime = new Intent(this, SetTimeActivity.class);
-        this.startActivity(intentgoToTime);
+        Intent gobackToHome = new Intent(this, HomeActivity.class);
+        this.startActivity(gobackToHome);
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuHome = getMenuInflater();
+        menuHome.inflate(R.menu.mainmenu, menu);
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -54,5 +56,4 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

@@ -3,6 +3,9 @@ package com.example.davidmoz.sportsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,4 +53,30 @@ public class OverviewActivity extends Activity implements View.OnClickListener {
         this.startActivity(intentGoToHome);
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuHome = getMenuInflater();
+        menuHome.inflate(R.menu.mainmenu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.home) {
+            Intent intentMenuHome = new Intent(this, HomeActivity.class);
+            this.startActivity(intentMenuHome);}
+
+        else if (item.getItemId() == R.id.settings){
+            Intent intentMenuAddInventory = new Intent (this, SettingsActivity.class);
+            this.startActivity(intentMenuAddInventory);}
+
+        else if (item.getItemId() == R.id.logout){
+            Intent intentMenuInventoryCheck = new Intent (this, MainLogIn.class);
+            this.startActivity(intentMenuInventoryCheck);}
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

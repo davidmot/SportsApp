@@ -3,6 +3,7 @@ package com.example.davidmoz.sportsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -42,4 +43,22 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         Intent intentgoToSettings=new Intent(this, OverviewActivity.class);
         this.startActivity(intentgoToSettings);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.home) {
+            Intent intentMenuHome = new Intent(this, HomeActivity.class);
+            this.startActivity(intentMenuHome);}
+
+        else if (item.getItemId() == R.id.settings){
+            Intent intentMenuAddInventory = new Intent (this, SettingsActivity.class);
+            this.startActivity(intentMenuAddInventory);}
+
+        else if (item.getItemId() == R.id.logout){
+            Intent intentMenuInventoryCheck = new Intent (this, MainLogIn.class);
+            this.startActivity(intentMenuInventoryCheck);}
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
