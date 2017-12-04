@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -115,17 +117,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         String email = editTextEmail.getText().toString();
         String password1 = editTextPassword1.getText().toString();
         String password2 = editTextPassword2.getText().toString();
-        String firstname = editTextFirstName.getText().toString();
-        String lastname = editTextLastName.getText().toString();
+        String userFirstName = editTextFirstName.getText().toString();
+        String userLastName = editTextLastName.getText().toString();
+        String userBirthday = Birthday.getText().toString();
 
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference("Users");
 
 
             if(v== Birthday) {
                 fromDatePickerDialog.show();
-            } else if (email.equals("") || password1.equals("")|| password2.equals("") || firstname.equals("") || lastname.equals("")|| password1.equals("")) {
+            } else if (email.equals("") || password1.equals("")|| password2.equals("") || userFirstName.equals("") || userLastName.equals("")|| password1.equals("")) {
                 Toast.makeText(RegisterActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             } else if (password1.equals(password2) ) {
                 createAccount(email, password1);
+
+                User myUser = new User(userFirstName, userLastName, userBirthday);
+                userRef.child("Test").push().setValue(myUser);
+
             } else { Toast.makeText(RegisterActivity.this, "Passwords are not coherent", Toast.LENGTH_SHORT).show();}
 
     }
