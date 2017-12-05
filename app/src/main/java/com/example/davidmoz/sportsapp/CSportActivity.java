@@ -20,14 +20,13 @@ public class CSportActivity extends Activity implements View.OnClickListener {
     private Button buttonConfirmCSport;
     private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
     private EditText editTextState, editTextCity;
-    private TextView userSport;
+    String userSport ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csport);
 
-        userSport=(TextView) findViewById(R.id.textViewSelectedSport);
 
         radioButtonGolf=(RadioButton) findViewById(R.id.radioButtonGolf);
         radioButtonGolf.setOnClickListener(this);
@@ -55,28 +54,38 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         final DatabaseReference userRef = db.getReference("Users");
 
 
+        String userCity = editTextCity.getText().toString();
+        String userState = editTextState.getText().toString();
+
+
+
+
         if (v == radioButtonChess) {
             radioButtonTennis.setChecked(false);
             radioButtonGolf.setChecked(false);
             radioButtonChess.setChecked(true);
-            userSport.setText("Chess");
+            userSport="Chess";
+
 
         } else if (v == radioButtonGolf) {
             radioButtonTennis.setChecked(false);
             radioButtonGolf.setChecked(true);
             radioButtonChess.setChecked(false);
-            userSport.setText("Golf");
+            userSport="Golf";
 
         } else if (v == radioButtonTennis) {
             radioButtonTennis.setChecked(true);
             radioButtonGolf.setChecked(false);
             radioButtonChess.setChecked(false);
-            userSport.setText("Tennis");
+            userSport="Tennis";
 
         } else if (v == buttonConfirmCSport) {
-            if (editTextState.equals("") || editTextCity.equals("") || userSport.equals(""))
+            if (userCity.equals("") || userState.equals("") || userSport.equals("")  )
             { Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
             } else {
+
+
+
                 Intent intentgoToTime = new Intent(this, SetTimeActivity.class);
                 this.startActivity(intentgoToTime);
             }

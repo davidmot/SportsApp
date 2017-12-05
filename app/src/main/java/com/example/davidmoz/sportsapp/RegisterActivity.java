@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -31,6 +32,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     private DatePickerDialog fromDatePickerDialog;
     private DatePickerDialog toDatePickerDialog;
+
 
     private SimpleDateFormat dateFormatter;
 
@@ -44,6 +46,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
 
         findViewsById();
 
@@ -98,6 +101,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -138,7 +142,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             } else { Toast.makeText(RegisterActivity.this, "Passwords are not coherent", Toast.LENGTH_SHORT).show();}
 
     }
-
 
     public void createAccount(String email, String password1) {
         mAuth.createUserWithEmailAndPassword(email, password1)

@@ -8,7 +8,7 @@ public class User {
     public String userFirstName, userLastname, userEmail, userSport, userCity, userState, userTime;
 
 
-    public User(String userFirstName, String userLastName, String userBirthday) {
+    public User(String firstName, String userFirstName, String userLastName) {
     }
 
     public User(String userFirstName, String userLastname, String userEmail, String userSport, String userCity, String userState, String userTime) {
