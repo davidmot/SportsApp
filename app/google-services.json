@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "782898565209-ab2r8b72jq5jhvt9sf56cpp57cf0b7jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.davidmoz.sportsapp",
+            "certificate_hash": "b85b7da757044cec3bd0bbd12ff23aadffca29d5"
+          }
+        },
+        {
           "client_id": "782898565209-jkg4ltt5rfp9dglie8dhi7oand8mq7o5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
