@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -49,10 +48,20 @@ public class OverviewActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intentGoToHome = new Intent(this, CSportActivity.class);
-        this.startActivity(intentGoToHome);
-
+        if (v == buttonChangeTime) {
+            Intent intentGotoTimesetting = new Intent(this, SetTimeActivity.class);
+            this.startActivity(intentGotoTimesetting);
+        }
+        else if (v == buttonChangeSports){
+            Intent intentGotosports = new Intent(this,CSportActivity.class);
+            this.startActivity(intentGotosports);
+        }
+        else if (v == buttonChangeLocation){
+            Intent intentGotolocations = new Intent(this,CSportActivity.class);
+            this.startActivity(intentGotolocations);
+        }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
