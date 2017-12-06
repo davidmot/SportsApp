@@ -103,9 +103,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         });
 
 
-
-
-
         listViewOverTime=(ListView)findViewById(R.id.listViewOverviewTime);
 
 

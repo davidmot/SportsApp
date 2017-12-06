@@ -162,6 +162,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     public void goToCSport() {
         Intent intentgoCSport = new Intent(this, CSportActivity.class);
         this.startActivity(intentgoCSport);
+        
     }
 
 }

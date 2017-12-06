@@ -10,27 +10,27 @@
         android:id="@+id/buttonRegister"
         android:layout_width="145dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="153dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginBottom="65dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginStart="120dp"
         android:background="@android:color/holo_green_dark"
         android:text="Register Here"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLogIn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonLogIn"
-        android:layout_width="145dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="153dp"
-        android:layout_marginEnd="40dp"
+        android:layout_width="311dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="37dp"
         android:background="@android:color/holo_blue_dark"
         android:text="Log In Here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -86,5 +86,20 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginStart="145dp"
+        android:text="New User ? "
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
