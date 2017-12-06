@@ -166,7 +166,7 @@
     <Spinner
         android:id="@+id/spinnerWeekday"
         android:layout_width="194dp"
-        android:layout_height="32dp"
+        android:layout_height="50dp"
         android:layout_above="@+id/buttonRemoveTime"
         android:layout_alignEnd="@+id/buttonRemoveTime"
         android:layout_alignRight="@+id/buttonRemoveTime"
@@ -189,13 +189,12 @@
         android:textStyle="bold" />
 
     <NumberPicker
-        android:id="@+id/numberPicker3"
+        android:id="@+id/numberPickerHour"
         android:layout_width="40dp"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:layout_above="@+id/textView4"
         android:layout_alignEnd="@+id/textView4"
         android:layout_alignRight="@+id/textView4"
-        android:layout_marginBottom="22dp"
-        />
+        android:layout_marginBottom="13dp" />
 
 </RelativeLayout>

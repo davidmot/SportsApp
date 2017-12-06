@@ -49,7 +49,7 @@ public class OverviewActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent intentGoToHome = new Intent(this, HomeActivity.class);
+        Intent intentGoToHome = new Intent(this, CSportActivity.class);
         this.startActivity(intentGoToHome);
 
     }
@@ -65,7 +65,7 @@ public class OverviewActivity extends Activity implements View.OnClickListener {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home) {
-            Intent intentMenuHome = new Intent(this, HomeActivity.class);
+            Intent intentMenuHome = new Intent(this, CSportActivity.class);
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){

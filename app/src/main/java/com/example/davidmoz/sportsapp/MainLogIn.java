@@ -125,7 +125,7 @@ public class MainLogIn extends Activity implements View.OnClickListener {
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){
-            Intent intentMenuAddInventory = new Intent (this, CSportActivity.class);
+            Intent intentMenuAddInventory = new Intent (this, SetTimeActivity.class);
             this.startActivity(intentMenuAddInventory);}
 
         else if (item.getItemId() == R.id.logout){

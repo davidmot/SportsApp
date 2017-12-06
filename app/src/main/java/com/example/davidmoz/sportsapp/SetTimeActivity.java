@@ -45,10 +45,21 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_time);
 
+        NumberPicker numberPickerHour =(NumberPicker)findViewById(R.id.numberPickerHour);
+        numberPickerHour.setMinValue(0);
+        numberPickerHour.setMaxValue(23);
+        numberPickerHour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+            }
+        });
+
         buttonAddTime=(Button) findViewById(R.id.buttonAddTime);
         buttonAddTime.setOnClickListener(this);
+
         buttonRemoveTime=(Button) findViewById(R.id.buttonRemoveTime);
         buttonRemoveTime.setOnClickListener(this);
+
         buttonConfirmTime=(Button) findViewById(R.id.buttonConfirmTime);
         buttonConfirmTime.setOnClickListener(this);
 
@@ -64,47 +75,30 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
                 {
                     case 0:
-
                         record = "Monday";
-
                         break;
                     case 1:
-
                         record = "Tuesday";
-
                         break;
                     case 2:
-
                         record = "Wednesday";
-
                         break;
-
                     case 3:
                         record = "Thursday";
                         break;
-
                     case 4:
                         record="Friday";
                         break;
-
                     case 5:
                     record="Saturday";
                     break;
-
                     case 6:
                         record="Sunday";
                         break;
-
-
-
-
-
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -115,24 +109,12 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         listViewOverTime=(ListView)findViewById(R.id.listViewOverviewTime);
 
 
-
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference userRef = database.getReference("user");
 
 
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
 
 
     @Override

@@ -27,7 +27,7 @@ public class HomeInstructionsActivity extends Activity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Intent gobackToHome = new Intent(this, HomeActivity.class);
+        Intent gobackToHome = new Intent(this, CSportActivity.class);
         this.startActivity(gobackToHome);
     }
 
@@ -43,7 +43,7 @@ public class HomeInstructionsActivity extends Activity implements View.OnClickLi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.home) {
-            Intent intentMenuHome = new Intent(this, HomeActivity.class);
+            Intent intentMenuHome = new Intent(this, CSportActivity.class);
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){
