@@ -30,7 +30,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     String record = "";
 
 
-
     private ListView listViewOverTime;
 
 
