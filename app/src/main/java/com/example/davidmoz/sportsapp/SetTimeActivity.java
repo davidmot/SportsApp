@@ -99,7 +99,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         });
 
 
-        listViewOverTime=(ListView)findViewById(R.id.listViewOverviewTime);
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -123,16 +122,11 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
 
-        if (v == buttonAddTime) {
-        }
-
         if (v==spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
             String selectedText = (String) spinnerWeekday.getSelectedItem();}
 
-        else if (v == buttonRemoveTime){
 
-        }
         else if (v == buttonConfirmTime) {
 
             Intent intentgoToSettings = new Intent(this, OverviewActivity.class);
