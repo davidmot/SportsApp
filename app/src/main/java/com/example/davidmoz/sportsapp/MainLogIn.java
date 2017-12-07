@@ -105,6 +105,8 @@ public class MainLogIn extends Activity implements View.OnClickListener {
 
     public void goToMenu() {
         Intent intentgoMenu = new Intent(this, OverviewActivity.class);
+        String email = editTextEmail.getText().toString();
+        intentgoMenu.putExtra("email",email);
         this.startActivity(intentgoMenu);
     }
 
@@ -125,7 +127,7 @@ public class MainLogIn extends Activity implements View.OnClickListener {
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){
-            Intent intentMenuAddInventory = new Intent (this, SetTimeActivity.class);
+            Intent intentMenuAddInventory = new Intent (this, CSportActivity.class);
             this.startActivity(intentMenuAddInventory);}
 
         else if (item.getItemId() == R.id.logout){

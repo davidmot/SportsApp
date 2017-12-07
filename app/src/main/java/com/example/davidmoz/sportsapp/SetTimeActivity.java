@@ -23,12 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class SetTimeActivity extends Activity implements View.OnClickListener {
-    private Button buttonConfirmTime, buttonAddTime, buttonRemoveTime;
+    private Button buttonConfirmTime;
     private NumberPicker numberPickerHour;
     private Spinner spinnerWeekday;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     String record = "";
-
 
 
     private ListView listViewOverTime;
@@ -54,11 +53,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        buttonAddTime=(Button) findViewById(R.id.buttonAddTime);
-        buttonAddTime.setOnClickListener(this);
 
-        buttonRemoveTime=(Button) findViewById(R.id.buttonRemoveTime);
-        buttonRemoveTime.setOnClickListener(this);
+
 
         buttonConfirmTime=(Button) findViewById(R.id.buttonConfirmTime);
         buttonConfirmTime.setOnClickListener(this);
@@ -105,10 +101,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
 
 
-
-        listViewOverTime=(ListView)findViewById(R.id.listViewOverviewTime);
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference userRef = database.getReference("user");
 
@@ -130,16 +122,11 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
 
-        if (v == buttonAddTime) {
-        }
-
         if (v==spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
             String selectedText = (String) spinnerWeekday.getSelectedItem();}
 
-        else if (v == buttonRemoveTime){
 
-        }
         else if (v == buttonConfirmTime) {
 
             Intent intentgoToSettings = new Intent(this, OverviewActivity.class);

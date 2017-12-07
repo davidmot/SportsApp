@@ -136,8 +136,9 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             } else if (password1.equals(password2) ) {
                 createAccount(email, password1);
 
-                User myUser = new User(userFirstName, userLastName, userBirthday, "tast", "test", "Test", "TEst");
-                userRef.child("Users").push().setValue(myUser);
+
+                User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
+                userRef.push().setValue(myUser);
 
             } else { Toast.makeText(RegisterActivity.this, "Passwords are not coherent", Toast.LENGTH_SHORT).show();}
 
@@ -160,8 +161,21 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     }
     public void goToCSport() {
+        String email = editTextEmail.getText().toString();
+        String password1 = editTextPassword1.getText().toString();
+        String password2 = editTextPassword2.getText().toString();
+        String userFirstName = editTextFirstName.getText().toString();
+        String userLastName = editTextLastName.getText().toString();
+        String userBirthday = Birthday.getText().toString();
+
         Intent intentgoCSport = new Intent(this, CSportActivity.class);
+        intentgoCSport.putExtra("email",email);
+        intentgoCSport.putExtra("userFirstName", userFirstName );
+        intentgoCSport.putExtra("userLastName", userLastName);
+        intentgoCSport.putExtra("userBirthday", userBirthday);
+
         this.startActivity(intentgoCSport);
+
     }
 
 }
