@@ -105,6 +105,8 @@ public class MainLogIn extends Activity implements View.OnClickListener {
 
     public void goToMenu() {
         Intent intentgoMenu = new Intent(this, OverviewActivity.class);
+        String email = editTextEmail.getText().toString();
+        intentgoMenu.putExtra("email",email);
         this.startActivity(intentgoMenu);
     }
 

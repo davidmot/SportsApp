@@ -137,8 +137,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 createAccount(email, password1);
 
 
-                User myUser = new User(userFirstName, userLastName, userBirthday, "tast", "test", "Test", "TEst");
-                userRef.child("Users").push().setValue(myUser);
+                User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
+                userRef.push().setValue(myUser);
 
             } else { Toast.makeText(RegisterActivity.this, "Passwords are not coherent", Toast.LENGTH_SHORT).show();}
 

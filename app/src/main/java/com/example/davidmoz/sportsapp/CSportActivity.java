@@ -25,13 +25,13 @@ public class CSportActivity extends Activity implements View.OnClickListener {
     private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
     private EditText editTextState, editTextCity;
     String userSport ="";
+    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_csport);
-
-
 
         radioButtonGolf=(RadioButton) findViewById(R.id.radioButtonGolf);
         radioButtonGolf.setOnClickListener(this);
@@ -47,13 +47,18 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
         buttonConfirmCSport=(Button) findViewById(R.id.buttonConfirmCSport);
         buttonConfirmCSport.setOnClickListener(this);
+
     }
 
 
     @Override
     public void onClick(View v) {
+
+        Intent intentgoMenu = getIntent();
+        final String email2= intentgoMenu.getStringExtra("email");
+
         Intent intentgoCSport = getIntent();
-        final String email = intentgoCSport.getStringExtra("email");
+        final String email1 = intentgoCSport.getStringExtra("email");
         String userFirstName = intentgoCSport.getStringExtra("userFirstName");
         String userLastName = intentgoCSport.getStringExtra("userLastName");
         String userBirthday = intentgoCSport.getStringExtra("userBirthday");
@@ -61,11 +66,8 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference("Users");
 
-
         final String userCity = editTextCity.getText().toString();
         final String userState = editTextState.getText().toString();
-
-
 
 
         if (v == radioButtonChess) {
@@ -90,12 +92,12 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         } else if (v == buttonConfirmCSport) {
             if (userCity.equals("") || userState.equals("") || userSport.equals("")  )
             { Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
-            } else {
+            }  else if (email1.equals("")) {
 
-                userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
+                userRef.orderByChild("userEmail").equalTo(email2).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                        userRef.orderByChild("userEmail").equalTo(email2).addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                 String userKey = dataSnapshot.getKey();
@@ -103,44 +105,65 @@ public class CSportActivity extends Activity implements View.OnClickListener {
                                 userRef.child(userKey).child("userCity").setValue(userCity);
                                 userRef.child(userKey).child("userState").setValue(userState);
                             }
-
                             @Override
                             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
                             }
-
                             @Override
                             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
                             }
-
                             @Override
                             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
                             }
-
                             @Override
                             public void onCancelled(DatabaseError databaseError) {
-
                             }
                         });
-
                     }
-
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-
                     }
                 });
-
                 Intent intentgoToTime = new Intent(this, SetTimeActivity.class);
                 intentgoCSport.putExtra("userSport", userSport);
                 intentgoCSport.putExtra("userCity", userCity);
                 intentgoCSport.putExtra("userState", userState);
-
+                this.startActivity(intentgoToTime);
+            } else  {
+                userRef.orderByChild("userEmail").equalTo(email1).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        userRef.orderByChild("userEmail").equalTo(email1).addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                String userKey = dataSnapshot.getKey();
+                                userRef.child(userKey).child("userSport").setValue(userSport);
+                                userRef.child(userKey).child("userCity").setValue(userCity);
+                                userRef.child(userKey).child("userState").setValue(userState);
+                            }
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                            }
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+                            }
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                            }
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+                Intent intentgoToTime = new Intent(this, SetTimeActivity.class);
+                intentgoCSport.putExtra("userSport", userSport);
+                intentgoCSport.putExtra("userCity", userCity);
+                intentgoCSport.putExtra("userState", userState);
                 this.startActivity(intentgoToTime);
             }
-
         }
     }
 
