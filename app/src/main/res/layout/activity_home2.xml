@@ -11,7 +11,7 @@
         android:layout_width="173dp"
         android:layout_height="28dp"
         android:layout_marginStart="26dp"
-        android:text="Pending Matches"
+        android:text="Invitations Pending"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -41,71 +41,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ListView
-        android:id="@+id/listViewUpcoming"
-        android:layout_width="333dp"
-        android:layout_height="88dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textViewHello"
-        android:layout_width="212dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="57dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginStart="25dp"
+        android:layout_width="155dp"
+        android:layout_height="39dp"
         android:background="@android:color/holo_green_light"
         android:gravity="center"
-        android:text="  Hello, XYZ "
+        android:text="NAME"
         android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toStartOf="@+id/buttonChangeSettings"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/buttonChangeSettings"
-        android:layout_width="122dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="37dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="135dp"
+        android:layout_height="39dp"
         android:text="Change Settings"
+        android:textAllCaps="false"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCancelUpcoming"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="233dp"
+        tools:layout_editor_absoluteY="57dp" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="173dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="26dp"
-        android:text="Confirm Matches here"
+        android:layout_height="27dp"
+        android:text="Matches Found:"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listViewConfirm"
-        app:layout_constraintEnd_toStartOf="@+id/buttonConfirmMatches"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="221dp" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="173dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="26dp"
-        android:text="Upcoming Matches"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:text="Your Settings"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listViewUpcoming"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="70dp" />
 
     <Button
         android:id="@+id/buttonCancelPending"
@@ -121,41 +100,30 @@
 
     <Button
         android:id="@+id/buttonCancelUpcoming"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginStart="80dp"
-        android:background="@android:color/holo_red_light"
-        android:text="Cancel"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Find a Match!"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewUpcoming"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView17" />
-
-    <Button
-        android:id="@+id/buttonCancelConfirmMatches"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/holo_red_light"
-        android:text="Cancel"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/listViewConfirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listViewUpcoming" />
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="148dp" />
 
     <Button
         android:id="@+id/buttonConfirmMatches"
-        android:layout_width="80dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="120dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="56dp"
         android:background="@android:color/holo_green_light"
-        android:text="Confirm"
+        android:text="Send Invite"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonCancelConfirmMatches"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/listViewUpcoming" />
+        tools:layout_editor_absoluteY="240dp" />
 
     <Button
         android:id="@+id/buttonAcceptPending"
@@ -169,17 +137,67 @@
         app:layout_constraintStart_toEndOf="@+id/textView36" />
 
     <TextView
-        android:id="@+id/textViewHelp"
-        android:layout_width="133dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="14dp"
-        android:text="Need Instructions ?Click here for Help"
-        android:textAlignment="center"
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Day and Time"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/buttonChangeSettings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHello" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="136dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Your Match and Send Invite"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="78dp"
+        android:layout_height="19dp"
+        android:text="Sport"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="96dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="90dp"
+        android:layout_height="19dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="117dp" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="90dp"
+        android:layout_height="19dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="159dp" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="178dp" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="79dp"
+        android:layout_height="19dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="197dp" />
 
 </android.support.constraint.ConstraintLayout>
