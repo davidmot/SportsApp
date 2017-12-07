@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,81 +9,17 @@
     <Button
         android:id="@+id/buttonConfirmTime"
         android:layout_width="310dp"
-        android:layout_height="27dp"
+        android:layout_height="37dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="37dp"
         android:background="@android:color/holo_green_dark"
         android:text="Confirm"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/buttonRemoveTime"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_alignEnd="@+id/textViewTimeInfo"
-        android:layout_alignRight="@+id/textViewTimeInfo"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="13dp"
-        android:layout_marginRight="13dp"
-        android:background="@android:color/holo_red_dark"
-        android:text="Remove Time"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listViewOverviewTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonAddTime" />
-
-    <Button
-        android:id="@+id/buttonAddTime"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_above="@+id/listViewOverviewTime"
-        android:layout_alignLeft="@+id/textView9"
-        android:layout_alignStart="@+id/textView9"
-        android:background="@android:color/holo_blue_dark"
-        android:text="Add Time"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listViewOverviewTime"
-        app:layout_constraintEnd_toStartOf="@+id/buttonRemoveTime"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewTimeInfo"
-        android:layout_width="294dp"
-        android:layout_height="52dp"
-        android:layout_below="@+id/buttonConfirmTime"
-        android:layout_toEndOf="@+id/textView33"
-        android:layout_toRightOf="@+id/textView33"
-        android:text="When do you wanna play generally in the week?"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ListView
-        android:id="@+id/listViewOverviewTime"
-        android:layout_width="357dp"
-        android:layout_height="176dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/buttonRemoveTime"
-        android:background="?android:attr/colorBackground"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -93,13 +29,14 @@
         android:layout_alignBottom="@+id/spinnerWeekday"
         android:layout_alignLeft="@+id/buttonConfirmTime"
         android:layout_alignStart="@+id/buttonConfirmTime"
+        android:layout_marginBottom="67dp"
+        android:layout_marginStart="37dp"
         android:text="Choose a weekday"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddTime"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerWeekday"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmTime"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -109,30 +46,30 @@
         android:layout_alignBottom="@+id/numberPickerHour"
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignStart="@+id/textView4"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="68dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="80dp"
         android:text="FROM"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimeInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView32"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="26dp"
-        android:layout_toEndOf="@+id/buttonAddTime"
-        android:layout_toRightOf="@+id/buttonAddTime"
+        android:layout_marginBottom="68dp"
+        android:layout_marginEnd="18dp"
         android:text="TO"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/spinnerWeekday"
-        app:layout_constraintEnd_toStartOf="@+id/textViewEndingTime"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimeInfo" />
+        app:layout_constraintEnd_toStartOf="@+id/textViewEndingTime" />
 
     <TextView
         android:id="@+id/textViewEndingTime"
@@ -141,57 +78,116 @@
         android:layout_alignEnd="@+id/buttonConfirmTime"
         android:layout_alignRight="@+id/buttonConfirmTime"
         android:layout_alignTop="@+id/textView34"
+        android:layout_marginBottom="66dp"
+        android:layout_marginEnd="56dp"
         android:text="hh:00"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerWeekday"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimeInfo" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView34"
+        android:layout_marginBottom="67dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="79dp"
         android:layout_toLeftOf="@+id/spinnerWeekday"
         android:layout_toStartOf="@+id/spinnerWeekday"
         android:text=":00"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerWeekday"
         app:layout_constraintEnd_toStartOf="@+id/textView33"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTimeInfo" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Spinner
         android:id="@+id/spinnerWeekday"
-        android:layout_width="194dp"
+        android:layout_width="167dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/buttonRemoveTime"
-        android:layout_alignEnd="@+id/buttonRemoveTime"
-        android:layout_alignRight="@+id/buttonRemoveTime"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="69dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginStart="26dp"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonRemoveTime"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="328dp"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/textViewEndingTime"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/textViewEndingTime"
+        android:layout_marginEnd="23dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="51dp"
         android:text="What time of the week you wanna play?"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <NumberPicker
         android:id="@+id/numberPickerHour"
         android:layout_width="40dp"
         android:layout_height="100dp"
         android:layout_below="@+id/textView9"
-        android:layout_marginTop="14dp"
+        android:layout_marginBottom="31dp"
+        android:layout_marginStart="34dp"
         android:layout_toLeftOf="@+id/textView32"
-        android:layout_toStartOf="@+id/textView32" />
+        android:layout_toStartOf="@+id/textView32"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView34" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="42dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="37dp"
+        android:text="Selected Location"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        app:layout_constraintBottom_toTopOf="@+id/numberPickerHour"
+        app:layout_constraintEnd_toStartOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="184dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="78dp"
+        android:layout_marginEnd="37dp"
+        android:text=" "
+        app:layout_constraintBottom_toTopOf="@+id/textViewEndingTime"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="184dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="24dp"
+        android:text="Selected Sport"
+        android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        app:layout_constraintEnd_toStartOf="@+id/textView29"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+</android.support.constraint.ConstraintLayout>

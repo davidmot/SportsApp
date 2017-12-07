@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SportsApp</string>
+    <string name="app_name">"Matchify"</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

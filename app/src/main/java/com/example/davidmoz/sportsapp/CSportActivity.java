@@ -25,7 +25,7 @@ public class CSportActivity extends Activity implements View.OnClickListener {
     private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
     private EditText editTextState, editTextCity;
     String userSport ="";
-    
+
 
 
     @Override
