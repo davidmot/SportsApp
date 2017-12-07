@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class SetTimeActivity extends Activity implements View.OnClickListener {
-    private Button buttonConfirmTime, buttonAddTime, buttonRemoveTime;
+    private Button buttonConfirmTime;
     private NumberPicker numberPickerHour;
     private Spinner spinnerWeekday;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
@@ -53,11 +53,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        buttonAddTime=(Button) findViewById(R.id.buttonAddTime);
-        buttonAddTime.setOnClickListener(this);
 
-        buttonRemoveTime=(Button) findViewById(R.id.buttonRemoveTime);
-        buttonRemoveTime.setOnClickListener(this);
+
 
         buttonConfirmTime=(Button) findViewById(R.id.buttonConfirmTime);
         buttonConfirmTime.setOnClickListener(this);
