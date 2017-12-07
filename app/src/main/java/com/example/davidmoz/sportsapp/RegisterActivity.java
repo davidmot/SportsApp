@@ -44,6 +44,9 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Intent intentgoCSport = getIntent();
+        final String email = intentgoCSport.getStringExtra("email");
+
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
@@ -57,6 +60,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextEmail.setText(email);
         editTextPassword1 = (EditText) findViewById(R.id.editTextPassword1);
         editTextPassword2 = (EditText) findViewById(R.id.editTextPassword2);
 

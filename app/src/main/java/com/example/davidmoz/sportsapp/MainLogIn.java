@@ -82,8 +82,12 @@ public class MainLogIn extends Activity implements View.OnClickListener {
             } else {signIn(email, password);}
 
         } else if (v.getId() == buttonRegister.getId()) {
-            Intent intentRegistrate = new Intent(this, RegisterActivity.class);
-            this.startActivity(intentRegistrate);
+            if (email.equals("")) {
+                Toast.makeText(MainLogIn.this,"Please Fill out Email First", Toast.LENGTH_SHORT).show();
+            } else {
+            Intent intentgoCSport = new Intent(this, RegisterActivity.class);
+            intentgoCSport.putExtra("email",email);
+            this.startActivity(intentgoCSport);}
         }
 
     }
@@ -105,9 +109,12 @@ public class MainLogIn extends Activity implements View.OnClickListener {
 
     public void goToMenu() {
         Intent intentgoMenu = new Intent(this, OverviewActivity.class);
-        String email = editTextEmail.getText().toString();
-        intentgoMenu.putExtra("email",email);
         this.startActivity(intentgoMenu);
+
+        Intent intentgoCSport = new Intent(this, MainLogIn.class);
+        String email = editTextEmail.getText().toString();
+        intentgoCSport.putExtra("email",email);
+
     }
 
     @Override

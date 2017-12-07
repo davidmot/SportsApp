@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Enter Log In Data"
+        android:text="Create your Log In Account"
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"

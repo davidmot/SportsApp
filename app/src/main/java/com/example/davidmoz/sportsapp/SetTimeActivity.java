@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     private Spinner spinnerWeekday;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     String record = "";
+    String userSport;
+    String userCity;
+    String userState;
 
 
     private ListView listViewOverTime;
@@ -53,6 +57,87 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        Intent intentgoMenu = getIntent();
+        final String email2= intentgoMenu.getStringExtra("email");
+
+        Intent intentgoCSport = getIntent();
+        final String email1 = intentgoCSport.getStringExtra("email");
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference("Users");
+
+        if (email1.equals("")) {
+            userRef.orderByChild("userEmail").equalTo(email2).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    userRef.orderByChild("userEmail").equalTo(email2).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            User userfound = new User();
+                            userSport= userfound.userSport;
+                            userCity = userfound.userCity;
+                            userState= userfound.userState;
+                        }
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        }
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+                        }
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                        }
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        } else {
+            userRef.orderByChild("userEmail").equalTo(email1).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    userRef.orderByChild("userEmail").equalTo(email1).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            User userfound = new User();
+
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
+
 
 
 
@@ -63,6 +148,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         spinnerWeekday=(Spinner) findViewById(R.id.spinnerWeekday);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,weekday);
         spinnerWeekday.setAdapter(adapter);
+
+
 
         spinnerWeekday.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -99,10 +186,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         });
 
 
-
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userRef = database.getReference("user");
 
 
     }
