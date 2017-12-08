@@ -55,7 +55,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        />
 
     <TextView
         android:id="@+id/textView33"
@@ -99,7 +99,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/spinnerWeekday"
         app:layout_constraintEnd_toStartOf="@+id/textView33"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewShowLocation" />
 
     <Spinner
         android:id="@+id/spinnerWeekday"
@@ -124,6 +124,7 @@
         android:layout_marginStart="33dp"
         android:layout_marginTop="51dp"
         android:text="What time of the week you wanna play?"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -144,50 +145,54 @@
         app:layout_constraintStart_toEndOf="@+id/textView34" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewSelectedLocation"
         android:layout_width="120dp"
         android:layout_height="25dp"
         android:layout_marginBottom="42dp"
-        android:layout_marginEnd="6dp"
         android:layout_marginStart="37dp"
-        android:text="Selected Location"
+        android:layout_marginTop="16dp"
+        android:text="SelectedLocation"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
         app:layout_constraintBottom_toTopOf="@+id/numberPickerHour"
-        app:layout_constraintEnd_toStartOf="@+id/textView12"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSelectedSport" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textViewShowLocation"
         android:layout_width="184dp"
         android:layout_height="25dp"
         android:layout_marginBottom="78dp"
         android:layout_marginEnd="37dp"
+        android:layout_marginStart="6dp"
         android:text=" "
         app:layout_constraintBottom_toTopOf="@+id/textViewEndingTime"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSelectedLocation" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/textViewShowSport"
         android:layout_width="184dp"
         android:layout_height="25dp"
         android:layout_marginBottom="13dp"
         android:layout_marginEnd="37dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintBottom_toTopOf="@+id/textViewShowLocation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textViewSelectedSport"
         android:layout_width="120dp"
         android:layout_height="25dp"
         android:layout_marginEnd="6dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="24dp"
-        android:text="Selected Sport"
+        android:text="SelectedSport"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
-        app:layout_constraintEnd_toStartOf="@+id/textView29"
+        app:layout_constraintEnd_toStartOf="@+id/textViewShowSport"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
 
 </android.support.constraint.ConstraintLayout>

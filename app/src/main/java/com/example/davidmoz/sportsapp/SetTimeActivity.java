@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -27,11 +28,14 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     private Button buttonConfirmTime;
     private NumberPicker numberPickerHour;
     private Spinner spinnerWeekday;
+    private TextView textViewShowSport, textViewShowLocation;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     String record = "";
     String userSport;
     String userCity;
     String userState;
+    String showLocation;
+    String showSport;
 
 
     private ListView listViewOverTime;
@@ -57,26 +61,21 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        Intent intentgoMenu = getIntent();
-        final String email2= intentgoMenu.getStringExtra("email");
-
         Intent intentgoCSport = getIntent();
-        final String email1 = intentgoCSport.getStringExtra("email");
+        final String email = intentgoCSport.getStringExtra("email");
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference("Users");
 
-        if (email1.equals("")) {
-            userRef.orderByChild("userEmail").equalTo(email2).addValueEventListener(new ValueEventListener() {
+            userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email2).addChildEventListener(new ChildEventListener() {
+                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                             User userfound = new User();
-                            userSport= userfound.userSport;
-                            userCity = userfound.userCity;
-                            userState= userfound.userState;
+                            textViewShowSport.setText(userfound.userSport);
+                            textViewShowLocation.setText(userfound.userCity+" , "+userfound.userState);
                         }
                         @Override
                         public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -96,48 +95,12 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
-        } else {
-            userRef.orderByChild("userEmail").equalTo(email1).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email1).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            User userfound = new User();
-
-                        }
-
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
 
 
+        textViewShowLocation=(TextView) findViewById(R.id.textViewShowLocation);
 
+
+        textViewShowSport=(TextView)findViewById(R.id.textViewShowSport);
 
 
 
@@ -155,7 +118,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position)
-
                 {
                     case 0:
                         record = "Monday";
@@ -203,12 +165,15 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        String userDay = spinnerWeekday.getSelectedItem().toString();
+        
 
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference("Users");
 
         if (v==spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
             String selectedText = (String) spinnerWeekday.getSelectedItem();}
-
 
         else if (v == buttonConfirmTime) {
 

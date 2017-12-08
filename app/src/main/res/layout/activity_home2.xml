@@ -147,7 +147,7 @@
         tools:layout_editor_absoluteY="136dp" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/textViewSelectedLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Your Match and Send Invite"
@@ -156,7 +156,7 @@
         tools:layout_editor_absoluteY="246dp" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textViewShowLocation"
         android:layout_width="78dp"
         android:layout_height="19dp"
         android:text="Sport"
@@ -183,7 +183,7 @@
         tools:layout_editor_absoluteY="159dp" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/textViewShowSport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
