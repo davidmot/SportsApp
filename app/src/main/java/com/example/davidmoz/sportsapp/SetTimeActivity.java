@@ -149,7 +149,6 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
 
 
-
     }
 
 
@@ -176,13 +175,12 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             String selectedText = (String) spinnerWeekday.getSelectedItem();}
 
         else if (v == buttonConfirmTime) {
-
-            Intent intentgoToSettings = new Intent(this, OverviewActivity.class);
+            //Why it won't go to the timeoverview page once clicked?
+            Intent intentgoToSettings = new Intent(this, timeoverview.class);
             this.startActivity(intentgoToSettings);
         }
+
     }
-
-
 
 
     @Override
