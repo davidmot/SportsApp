@@ -15,6 +15,8 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,14 +30,14 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     private Button buttonConfirmTime;
     private NumberPicker numberPickerHour;
     private Spinner spinnerWeekday;
-    private TextView textViewShowSport, textViewShowLocation;
+    private TextView textViewShowSport, textViewShowLocation, textViewEndingTime;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     String record = "";
-    String userSport;
-    String userCity;
-    String userState;
-    String showLocation;
-    String showSport;
+    String userSport1= "Golf";
+    String userCity="";
+    String userState="";
+    String showLocation="";
+    String showSport="";
 
 
     private ListView listViewOverTime;
@@ -52,30 +54,37 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_time);
 
-        NumberPicker numberPickerHour =(NumberPicker)findViewById(R.id.numberPickerHour);
+        textViewShowLocation=(TextView) findViewById(R.id.textViewShowLocation);
+        textViewShowSport=(TextView)findViewById(R.id.textViewShowSport);
+        textViewEndingTime=(TextView)findViewById(R.id.textViewEndingTime);
+
+
+        numberPickerHour =(NumberPicker)findViewById(R.id.numberPickerHour);
         numberPickerHour.setMinValue(0);
         numberPickerHour.setMaxValue(23);
         numberPickerHour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                updatePickTime();
             }
         });
 
-        Intent intentgoCSport = getIntent();
-        final String email = intentgoCSport.getStringExtra("email");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference userRef = db.getReference("Users");
+        final DatabaseReference userRef = db.getReference().child(userProfile);
 
-            userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
+            userRef.child(userProfile).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                    userRef.child(userProfile).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                             User userfound = new User();
                             textViewShowSport.setText(userfound.userSport);
                             textViewShowLocation.setText(userfound.userCity+" , "+userfound.userState);
+
                         }
                         @Override
                         public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -97,22 +106,14 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             });
 
 
-        textViewShowLocation=(TextView) findViewById(R.id.textViewShowLocation);
-
-
-        textViewShowSport=(TextView)findViewById(R.id.textViewShowSport);
-
 
 
         buttonConfirmTime=(Button) findViewById(R.id.buttonConfirmTime);
         buttonConfirmTime.setOnClickListener(this);
 
-
         spinnerWeekday=(Spinner) findViewById(R.id.spinnerWeekday);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,weekday);
         spinnerWeekday.setAdapter(adapter);
-
-
 
         spinnerWeekday.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -148,31 +149,40 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         });
 
 
+    }
 
+    private void updatePickTime(){
+        if (userSport1.equals("Golf")) {
+            int pickedvalue = numberPickerHour.getValue();
+            textViewEndingTime.setText(pickedvalue+1+":00 h");
+        } else if (userSport1.equals("Tennis")) {
+            int pickedvalue = numberPickerHour.getValue();
+            textViewEndingTime.setText(pickedvalue+2+":00 h");
+        } else if (userSport1.equals("Chess")){
+            int pickedvalue = numberPickerHour.getValue();
+            textViewEndingTime.setText(pickedvalue+3+":00 h");
+        }
     }
 
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater menuHome = getMenuInflater();
         menuHome.inflate(R.menu.mainmenu, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public void onClick(View v) {
         String userDay = spinnerWeekday.getSelectedItem().toString();
-        
 
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference userRef = db.getReference("Users");
+
 
         if (v==spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
             String selectedText = (String) spinnerWeekday.getSelectedItem();}
+
 
         else if (v == buttonConfirmTime) {
             //Why it won't go to the timeoverview page once clicked?
@@ -181,6 +191,12 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         }
 
     }
+
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    final String userProfile = user.getUid().toString();
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    final DatabaseReference userRef = db.getReference().child(userProfile);
 
 
     @Override

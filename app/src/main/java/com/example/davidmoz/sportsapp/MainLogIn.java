@@ -122,7 +122,6 @@ public class MainLogIn extends Activity implements View.OnClickListener {
 
         MenuInflater menuHome = getMenuInflater();
         menuHome.inflate(R.menu.mainmenu, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 

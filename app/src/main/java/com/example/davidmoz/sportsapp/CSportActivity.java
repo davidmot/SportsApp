@@ -3,6 +3,7 @@ package com.example.davidmoz.sportsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,6 +14,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +28,8 @@ public class CSportActivity extends Activity implements View.OnClickListener {
     private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
     private EditText editTextState, editTextCity;
     String userSport ="";
+    Double time= null;
+
 
 
 
@@ -61,8 +66,12 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         String userLastName = intentgoCSport.getStringExtra("userLastName");
         String userBirthday = intentgoCSport.getStringExtra("userBirthday");
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userProfile = user.getUid().toString();
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference userRef = db.getReference("Users");
+        final DatabaseReference userRef = db.getReference().child(userProfile);
+
 
         final String userCity = editTextCity.getText().toString();
         final String userState = editTextState.getText().toString();
@@ -91,16 +100,19 @@ public class CSportActivity extends Activity implements View.OnClickListener {
             if (userCity.equals("") || userState.equals("") || userSport.equals("")  )
             { Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
             }  else {
-                userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
+                userRef.child(userRef.getKey()).child("userSport").setValue(userSport);
+                userRef.child(userRef.getKey()).child("userCity").setValue(userCity);
+                userRef.child(userRef.getKey()).child("userState").setValue(userState);
+                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                        userRef.child(userProfile).addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                 String userKey = dataSnapshot.getKey();
-                                userRef.child(userKey).child("userSport").setValue(userSport);
-                                userRef.child(userKey).child("userCity").setValue(userCity);
-                                userRef.child(userKey).child("userState").setValue(userState);
+
                             }
                             @Override
                             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -124,7 +136,7 @@ public class CSportActivity extends Activity implements View.OnClickListener {
                 intentgoCSport.putExtra("userSport", userSport);
                 intentgoCSport.putExtra("userCity", userCity);
                 intentgoCSport.putExtra("userState", userState);
-                this.startActivity(intentgoToTime);
+
             }
         }
     }

@@ -28,8 +28,7 @@ public class timeoverview extends Activity implements Button.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.timeoverview);
 
-        buttonChange = (Button)findViewById(R.id.buttonChange);
-        buttonConfirm = (Button)findViewById(R.id.buttonChange);
+
         textViewDay = (TextView)findViewById(R.id.textViewDay);
         textView14 = (TextView)findViewById(R.id.textView14);
         textView13 = (TextView)findViewById(R.id.textView13);
@@ -41,21 +40,6 @@ public class timeoverview extends Activity implements Button.OnClickListener{
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        //How to check start/end time here from database?
-        DatabaseReference myLookupRef = database.getReference("message");
-        myLookupRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //How to retrieve hour picker data from firebase here?
-                textViewStart.setText(dblstarttime.toString());
-                textViewEnd.setText(dblendtime.toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
 

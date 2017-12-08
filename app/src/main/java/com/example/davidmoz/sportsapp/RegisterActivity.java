@@ -129,8 +129,11 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         String userLastName = editTextLastName.getText().toString();
         String userBirthday = Birthday.getText().toString();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userProfile = user.getUid().toString();
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference userRef = db.getReference("Users");
+        final DatabaseReference userRef = db.getReference().child(userProfile);
 
 
             if(v== Birthday) {
@@ -139,7 +142,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 Toast.makeText(RegisterActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             } else if (password1.equals(password2) ) {
                 createAccount(email, password1);
-
+                signIn(email, password1);
 
                 User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
                 userRef.push().setValue(myUser);
@@ -156,14 +159,28 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                         if (!task.isSuccessful())  {
                             Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                         }  else{
-                            Toast.makeText(RegisterActivity.this, "Regristaiton Succesful", Toast.LENGTH_SHORT).show();
                             goToCSport();
                         }
                     }
                 });
-
-
     }
+
+    public void signIn(String email, String password) {
+
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (!task.isSuccessful()) {
+                    Toast.makeText(RegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    ;
+                }
+            }
+        });
+    }
+
+
     public void goToCSport() {
         String email = editTextEmail.getText().toString();
         String password1 = editTextPassword1.getText().toString();
