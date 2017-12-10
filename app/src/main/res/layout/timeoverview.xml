@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textViewDay"
-        android:layout_width="81dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="23dp"
-        android:text="TextView"
+        android:layout_width="92dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:text="Available Time"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -52,11 +52,12 @@
         android:id="@+id/textView14"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:text="From"
         android:textColor="@android:color/holo_green_dark"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textViewDay"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
