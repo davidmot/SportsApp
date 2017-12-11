@@ -22,4 +22,8 @@ public class User {
         this.userEndTime = userEndTime;
         this.userDay = userDay;
     }
+
+    public void setUserSport (String userSport) {
+        this.userSport = userSport;
+    }
 }

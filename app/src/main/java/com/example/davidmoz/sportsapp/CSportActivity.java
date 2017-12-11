@@ -66,7 +66,7 @@ public class CSportActivity extends Activity implements View.OnClickListener {
         String userLastName = intentgoCSport.getStringExtra("userLastName");
         String userBirthday = intentgoCSport.getStringExtra("userBirthday");
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -103,10 +103,15 @@ public class CSportActivity extends Activity implements View.OnClickListener {
                 userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        User user = dataSnapshot.getValue(User.class);
+                        user.setUserSport(userSport);
 
-                        userRef.child(userRef.getKey()).child("userSport").setValue(userSport);
-                        userRef.child(userRef.getKey()).child("userCity").setValue(userCity);
-                        userRef.child(userRef.getKey()).child("userState").setValue(userState);
+                        userRef.push().setValue(user);
+                        /// /User user = dataSnapshot.getValue(User.class);
+
+                        //userRef.child("userSport").setValue(userSport);
+                        //userRef.getRef().child("userCity").setValue(userCity);
+                        //userRef.getRef().child("userState").setValue(userState);
                     }
 
 
@@ -114,7 +119,12 @@ public class CSportActivity extends Activity implements View.OnClickListener {
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
+
+
                 });
+
+                Intent intentgoToSettings = new Intent(this, SetTimeActivity.class);
+                this.startActivity(intentgoToSettings);
 
             }
 
