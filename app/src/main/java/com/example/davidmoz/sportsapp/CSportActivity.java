@@ -81,63 +81,44 @@ public class CSportActivity extends Activity implements View.OnClickListener {
             radioButtonTennis.setChecked(false);
             radioButtonGolf.setChecked(false);
             radioButtonChess.setChecked(true);
-            userSport="Chess";
+            userSport = "Chess";
 
 
         } else if (v == radioButtonGolf) {
             radioButtonTennis.setChecked(false);
             radioButtonGolf.setChecked(true);
             radioButtonChess.setChecked(false);
-            userSport="Golf";
+            userSport = "Golf";
 
         } else if (v == radioButtonTennis) {
             radioButtonTennis.setChecked(true);
             radioButtonGolf.setChecked(false);
             radioButtonChess.setChecked(false);
-            userSport="Tennis";
+            userSport = "Tennis";
 
         } else if (v == buttonConfirmCSport) {
-            if (userCity.equals("") || userState.equals("") || userSport.equals("")  )
-            { Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
-            }  else {
-                userRef.child(userRef.getKey()).child("userSport").setValue(userSport);
-                userRef.child(userRef.getKey()).child("userCity").setValue(userCity);
-                userRef.child(userRef.getKey()).child("userState").setValue(userState);
+            if (userCity.equals("") || userState.equals("") || userSport.equals("")) {
+                Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
+            } else {
                 userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        userRef.child(userProfile).addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                                String userKey = dataSnapshot.getKey();
 
-                            }
-                            @Override
-                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                            }
-                            @Override
-                            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                            }
-                            @Override
-                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                            }
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                            }
-                        });
+                        userRef.child(userRef.getKey()).child("userSport").setValue(userSport);
+                        userRef.child(userRef.getKey()).child("userCity").setValue(userCity);
+                        userRef.child(userRef.getKey()).child("userState").setValue(userState);
                     }
+
+
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
+
                     }
                 });
-                Intent intentgoToTime = new Intent(this, SetTimeActivity.class);
-                intentgoCSport.putExtra("userSport", userSport);
-                intentgoCSport.putExtra("userCity", userCity);
-                intentgoCSport.putExtra("userState", userState);
 
             }
+
+
         }
     }
 

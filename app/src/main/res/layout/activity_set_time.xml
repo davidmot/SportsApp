@@ -146,50 +146,56 @@
 
     <TextView
         android:id="@+id/textViewSelectedLocation"
-        android:layout_width="120dp"
-        android:layout_height="25dp"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
         android:layout_marginBottom="42dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="16dp"
-        android:text="SelectedLocation"
+        android:text="Selected Location"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/numberPickerHour"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSelectedSport" />
 
     <TextView
         android:id="@+id/textViewShowLocation"
-        android:layout_width="184dp"
-        android:layout_height="25dp"
+        android:layout_width="147dp"
+        android:layout_height="26dp"
         android:layout_marginBottom="78dp"
         android:layout_marginEnd="37dp"
         android:layout_marginStart="6dp"
-        android:text=" "
+        android:text="Ann Arbor, Michigan"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewEndingTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewSelectedLocation" />
 
     <TextView
         android:id="@+id/textViewShowSport"
-        android:layout_width="184dp"
+        android:layout_width="150dp"
         android:layout_height="25dp"
         android:layout_marginBottom="13dp"
         android:layout_marginEnd="37dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
+        android:text="Golf"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewShowLocation"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewSelectedSport"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textViewSelectedSport"
-        android:layout_width="120dp"
+        android:layout_width="150dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="37dp"
         android:layout_marginTop="24dp"
-        android:text="SelectedSport"
+        android:text="Selected Sport"
         android:textColor="@color/common_google_signin_btn_text_light_pressed"
-        app:layout_constraintEnd_toStartOf="@+id/textViewShowSport"
+        app:layout_constraintBottom_toTopOf="@+id/textViewSelectedLocation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 

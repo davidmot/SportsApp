@@ -82,8 +82,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                             User userfound = new User();
-                            textViewShowSport.setText(userfound.userSport);
-                            textViewShowLocation.setText(userfound.userCity+" , "+userfound.userState);
+
+
 
                         }
                         @Override
@@ -186,7 +186,7 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
         else if (v == buttonConfirmTime) {
             //Why it won't go to the timeoverview page once clicked?
-            Intent intentgoToSettings = new Intent(this, timeoverview.class);
+            Intent intentgoToSettings = new Intent(this, HomeActivity.class);
             this.startActivity(intentgoToSettings);
         }
 

@@ -133,7 +133,7 @@ public class MainLogIn extends Activity implements View.OnClickListener {
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){
-            Intent intentMenuAddInventory = new Intent (this, SetTimeActivity.class);
+            Intent intentMenuAddInventory = new Intent (this, ChatActivity.class);
             this.startActivity(intentMenuAddInventory);}
 
         else if (item.getItemId() == R.id.logout){
