@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Set;
+
 public class CSportActivity extends Activity implements View.OnClickListener {
     private Button buttonConfirmCSport;
     private RadioButton radioButtonGolf, radioButtonTennis, radioButtonChess;
@@ -62,12 +64,10 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
         Intent intentgoCSport = getIntent();
         final String email = intentgoCSport.getStringExtra("email");
-        String userFirstName = intentgoCSport.getStringExtra("userFirstName");
-        String userLastName = intentgoCSport.getStringExtra("userLastName");
-        String userBirthday = intentgoCSport.getStringExtra("userBirthday");
+
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        final String userProfile = user.getUid().toString();
+        final String userProfile = user.getUid();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference().child(userProfile);
@@ -98,38 +98,73 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
         } else if (v == buttonConfirmCSport) {
             if (userCity.equals("") || userState.equals("") || userSport.equals("")) {
-                Toast.makeText(CSportActivity.this, "Please Fill out all Fields", Toast.LENGTH_SHORT).show();
-            } else {
-                userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
+                Toast.makeText(CSportActivity.this, userSport, Toast.LENGTH_SHORT).show();
+          } else {
+               userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                   @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        User user = dataSnapshot.getValue(User.class);
-                        user.setUserSport(userSport);
+                       for (DataSnapshot userObj : dataSnapshot.getChildren()){
+                           User user = userObj.getValue(User.class);
+                           Log.d("asdasd", "sport:" + userSport);
+                           user.setUserCity(userCity);
+                           user.setUserState(userState);
+                           user.setUserSport(userSport);
 
-                        userRef.push().setValue(user);
-                        /// /User user = dataSnapshot.getValue(User.class);
+                           userObj.getRef().updateChildren(user.toMap());
+                       }
 
-                        //userRef.child("userSport").setValue(userSport);
-                        //userRef.getRef().child("userCity").setValue(userCity);
-                        //userRef.getRef().child("userState").setValue(userState);
-                    }
+                        /*userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
+                                if (dataSnapshot.getValue() == null) {
+                                    Toast.makeText(CSportActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    String userKey = dataSnapshot.getKey();
+                                    userRef.child(userKey).child("userSport").setValue(userSport);
+                                    userRef.child(userKey).child("userCity").setValue(userCity);
+                                    userRef.child(userKey).child("userState").setValue(userState);
+                                }
 
-                    @Override
+                           }
+
+                 @Override
+                  public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                 }
+
+                          @Override
+                          public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                         }
+
+                         @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                             }
+
+                            @Override
+                         public void onCancelled(DatabaseError databaseError) {
+
+                           }
+                        });*/
+                   }
+
+                   @Override
                     public void onCancelled(DatabaseError databaseError) {
 
-                    }
-
-
-                });
-
-                Intent intentgoToSettings = new Intent(this, SetTimeActivity.class);
-                this.startActivity(intentgoToSettings);
-
+                       }
+                 });
+                //goToCSport();
             }
 
 
         }
+    }
+
+    public void goToCSport() {
+        Intent intentgoToSettings = new Intent(this, SetTimeActivity.class);
+        this.startActivity(intentgoToSettings);
     }
 
     @Override

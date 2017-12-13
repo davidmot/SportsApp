@@ -132,26 +132,19 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userProfile = user.getUid().toString();
 
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference userRef = db.getReference().child(userProfile);
-
 
             if(v== Birthday) {
                 fromDatePickerDialog.show();
             } else if (email.equals("") || password1.equals("")|| password2.equals("") || userFirstName.equals("") || userLastName.equals("")|| password1.equals("")) {
-                Toast.makeText(RegisterActivity.this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, userProfile, Toast.LENGTH_SHORT).show();
             } else if (password1.equals(password2) ) {
                 createAccount(email, password1);
-                signIn(email, password1);
-
-                User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
-                userRef.push().setValue(myUser);
 
             } else { Toast.makeText(RegisterActivity.this, "Passwords are not coherent", Toast.LENGTH_SHORT).show();}
 
     }
 
-    public void createAccount(String email, String password1) {
+    public void createAccount(final String email, final String password1) {
         mAuth.createUserWithEmailAndPassword(email, password1)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -159,7 +152,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                         if (!task.isSuccessful())  {
                             Toast.makeText(RegisterActivity.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                         }  else{
-                            goToCSport();
+                            signIn(email, password1);
                         }
                     }
                 });
@@ -173,7 +166,21 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 if (!task.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                 } else {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String userProfile = user.getUid().toString();
+
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference userRef = db.getReference().child(userProfile);
+
+                    String email = editTextEmail.getText().toString();
+                    String userFirstName = editTextFirstName.getText().toString();
+                    String userLastName = editTextLastName.getText().toString();
+
+
+                    User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
+                    userRef.push().setValue(myUser);
                     Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    goToCSport();
                     ;
                 }
             }

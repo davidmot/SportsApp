@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +59,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         textViewShowSport=(TextView)findViewById(R.id.textViewShowSport);
         textViewEndingTime=(TextView)findViewById(R.id.textViewEndingTime);
 
+        Intent intentgoCSport = getIntent();
+        final String email = intentgoCSport.getStringExtra("email");
 
         numberPickerHour =(NumberPicker)findViewById(R.id.numberPickerHour);
         numberPickerHour.setMinValue(0);
@@ -69,20 +72,31 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        numberPickerHour.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                return null;
+            }
+        });
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference().child(userProfile);
 
-            userRef.child(userProfile).addValueEventListener(new ValueEventListener() {
+            userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.child(userProfile).addChildEventListener(new ChildEventListener() {
+                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                             User userfound = new User();
-
+                            userCity = userfound.userCity;
+                            userState= userfound.userState;
+                            textViewShowLocation.setText(userCity+"  . "+userState);
+                            userSport1=userfound.userSport;
+                            textViewShowSport.setText(userSport1);
 
 
                         }
@@ -175,17 +189,114 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        String userDay = spinnerWeekday.getSelectedItem().toString();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userProfile = user.getUid().toString();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference().child(userProfile);
+
+
+        final String userDay = spinnerWeekday.getSelectedItem().toString();
+
+        final String userEndTime = textViewEndingTime.getText().toString();
+
+        Intent intentgoCSport = getIntent();
+        final String email = intentgoCSport.getStringExtra("email");
 
 
 
-        if (v==spinnerWeekday) {
+
+
+        if (v == spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
-            String selectedText = (String) spinnerWeekday.getSelectedItem();}
+            String selectedText = (String) spinnerWeekday.getSelectedItem();
+
+            userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            String userKey = dataSnapshot.getKey();
+                            userRef.child(userKey).child("userDay").setValue(userDay);
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
 
-        else if (v == buttonConfirmTime) {
-            //Why it won't go to the timeoverview page once clicked?
+
+    else if (v == buttonConfirmTime) {
+            if (userDay.equals("") || userEndTime.equals("")){
+                Toast.makeText(SetTimeActivity.this, "Please Choose a Time and a Day", Toast.LENGTH_SHORT).show();
+            }
+            userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                            String userKey = dataSnapshot.getKey();
+                            userRef.child(userKey).child("userEndTime").setValue(userEndTime);
+                        }
+
+                        @Override
+                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
+
             Intent intentgoToSettings = new Intent(this, HomeActivity.class);
             this.startActivity(intentgoToSettings);
         }

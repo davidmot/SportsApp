@@ -1,5 +1,10 @@
 package com.example.davidmoz.sportsapp;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by davidmoz on 04.12.17.
  */
@@ -23,7 +28,36 @@ public class User {
         this.userDay = userDay;
     }
 
-    public void setUserSport (String userSport) {
+    public String getUserEmail() {
+        return this.userEmail;
+    }
+
+    public void setUserSport(String userSport) {
         this.userSport = userSport;
     }
+
+    public void setUserCity(String userCity) {
+        this.userCity = userCity;
+    }
+
+    public void setUserState(String userState) {
+        this.userState = userState;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("userFirstName:", userFirstName);
+        result.put("userLastname:", userLastname);
+        result.put("userDay:", userDay);
+        result.put("userEmail:", userEmail);
+        result.put("userSport:", userSport);
+        result.put("userStartTime:", userStartTime);
+        result.put("userEndTime:", userEndTime);
+        result.put("userCity:", userCity);
+        result.put("userState:", userState);
+
+        return result;
+    }
+
 }

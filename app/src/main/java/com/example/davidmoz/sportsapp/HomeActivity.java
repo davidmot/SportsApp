@@ -6,13 +6,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements View.OnClickListener {
+
+    private Button buttonChangeSettings;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
+
+        buttonChangeSettings=(Button)findViewById(R.id.buttonChangeSettings);
+        buttonChangeSettings.setOnClickListener(this);
+
     }
 
     public void goToMenu() {
@@ -45,6 +54,16 @@ public class HomeActivity extends Activity {
             this.startActivity(intentMenuInventoryCheck);}
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (v==buttonChangeSettings) {
+            Intent goToSsettings = new Intent(this, CSportActivity.class);
+            this.startActivity(goToSsettings);
+        }
+
     }
 }
 
