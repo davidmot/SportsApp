@@ -34,7 +34,7 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     private TextView textViewShowSport, textViewShowLocation, textViewEndingTime;
     String weekday [] = {"Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
     String record = "";
-    String userSport1= "Golf";
+    String userSport1= "";
     String userCity="";
     String userState="";
     String showLocation="";
@@ -59,10 +59,8 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         textViewShowSport=(TextView)findViewById(R.id.textViewShowSport);
         textViewEndingTime=(TextView)findViewById(R.id.textViewEndingTime);
 
-        Intent intentgoCSport = getIntent();
-        final String email = intentgoCSport.getStringExtra("email");
 
-        numberPickerHour =(NumberPicker)findViewById(R.id.numberPickerHour);
+        numberPickerHour =(NumberPicker) findViewById(R.id.numberPickerHour);
         numberPickerHour.setMinValue(0);
         numberPickerHour.setMaxValue(23);
         numberPickerHour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
@@ -72,52 +70,24 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
             }
         });
 
-        numberPickerHour.setFormatter(new NumberPicker.Formatter() {
-            @Override
-            public String format(int value) {
-                return null;
-            }
-        });
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference().child(userProfile);
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User userData = dataSnapshot.getValue(User.class);
+                textViewShowSport.setText(userData.userSport);
+                textViewShowLocation.setText(userData.userCity+" , "+userData.userState);
+            }
 
-            userRef.orderByChild("userEmail").equalTo(email).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            User userfound = new User();
-                            userCity = userfound.userCity;
-                            userState= userfound.userState;
-                            textViewShowLocation.setText(userCity+"  . "+userState);
-                            userSport1=userfound.userSport;
-                            textViewShowSport.setText(userSport1);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-
-                        }
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                        }
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-                        }
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            }
+        });
 
 
 
@@ -166,12 +136,14 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     }
 
     private void updatePickTime(){
+        String userSport1 =textViewShowSport.getText().toString();
+
         if (userSport1.equals("Golf")) {
             int pickedvalue = numberPickerHour.getValue();
-            textViewEndingTime.setText(pickedvalue+1+":00 h");
+            textViewEndingTime.setText(pickedvalue+2+":00 h");
         } else if (userSport1.equals("Tennis")) {
             int pickedvalue = numberPickerHour.getValue();
-            textViewEndingTime.setText(pickedvalue+2+":00 h");
+            textViewEndingTime.setText(pickedvalue+1+":00 h");
         } else if (userSport1.equals("Chess")){
             int pickedvalue = numberPickerHour.getValue();
             textViewEndingTime.setText(pickedvalue+3+":00 h");
@@ -190,7 +162,7 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -198,116 +170,47 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
 
 
         final String userDay = spinnerWeekday.getSelectedItem().toString();
+        final String userStartTime = String.valueOf(numberPickerHour.getValue());
+
 
         final String userEndTime = textViewEndingTime.getText().toString();
-
-        Intent intentgoCSport = getIntent();
-        final String email = intentgoCSport.getStringExtra("email");
-
-
-
 
 
         if (v == spinnerWeekday) {
             int position = spinnerWeekday.getSelectedItemPosition();
             String selectedText = (String) spinnerWeekday.getSelectedItem();
 
-            userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            String userKey = dataSnapshot.getKey();
-                            userRef.child(userKey).child("userDay").setValue(userDay);
-                        }
-
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
         }
 
 
 
     else if (v == buttonConfirmTime) {
-            if (userDay.equals("") || userEndTime.equals("")){
+            if (userDay.equals("") ){
                 Toast.makeText(SetTimeActivity.this, "Please Choose a Time and a Day", Toast.LENGTH_SHORT).show();
+            } else {
+                userRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        userRef.child("userDay").setValue(userDay);
+                        userRef.child("userEndTime").setValue(userEndTime);
+                        userRef.child("userStartTime").setValue(userStartTime);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+                Intent intentgoToSettings = new Intent(this, HomeActivity.class);
+                this.startActivity(intentgoToSettings);
             }
-            userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            String userKey = dataSnapshot.getKey();
-                            userRef.child(userKey).child("userEndTime").setValue(userEndTime);
-                        }
-
-                        @Override
-                        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                        }
-
-                        @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-            Intent intentgoToSettings = new Intent(this, HomeActivity.class);
-            this.startActivity(intentgoToSettings);
         }
 
     }
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    final String userProfile = user.getUid().toString();
-
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
-    final DatabaseReference userRef = db.getReference().child(userProfile);
 
 
     @Override
@@ -316,9 +219,9 @@ public class SetTimeActivity extends Activity implements View.OnClickListener {
         Intent intentMenuHome=new Intent(this,HomeActivity.class);
         this.startActivity(intentMenuHome);}
 
-        else if(item.getItemId()==R.id.settings){
-        Intent intentMenuAddInventory=new Intent(this,SettingsActivity.class);
-        this.startActivity(intentMenuAddInventory);}
+        else if (item.getItemId() == R.id.settings){
+            Intent intentMenuAddInventory = new Intent (this, CSportActivity.class);
+            this.startActivity(intentMenuAddInventory);}
 
         else if(item.getItemId()==R.id.logout){
         Intent intentMenuInventoryCheck=new Intent(this,MainLogIn.class);

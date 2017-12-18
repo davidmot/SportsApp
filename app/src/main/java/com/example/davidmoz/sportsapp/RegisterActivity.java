@@ -178,7 +178,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
 
                     User myUser = new User(userFirstName, userLastName, email, "Test", "Test", "Test", "Test", "Test", "Test");
-                    userRef.push().setValue(myUser);
+                    userRef.setValue(myUser);
                     Toast.makeText(RegisterActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     goToCSport();
                     ;

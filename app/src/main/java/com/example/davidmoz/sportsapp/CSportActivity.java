@@ -67,7 +67,7 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        final String userProfile = user.getUid();
+        final String userProfile = user.getUid().toString();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         final DatabaseReference userRef = db.getReference().child(userProfile);
@@ -98,74 +98,33 @@ public class CSportActivity extends Activity implements View.OnClickListener {
 
         } else if (v == buttonConfirmCSport) {
             if (userCity.equals("") || userState.equals("") || userSport.equals("")) {
-                Toast.makeText(CSportActivity.this, userSport, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CSportActivity.this, "Please Fill Out All Fields", Toast.LENGTH_SHORT).show();
           } else {
-               userRef.orderByChild("userEmail").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                   @Override
+                userRef.addValueEventListener(new ValueEventListener() {
+                    @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                       for (DataSnapshot userObj : dataSnapshot.getChildren()){
-                           User user = userObj.getValue(User.class);
-                           Log.d("asdasd", "sport:" + userSport);
-                           user.setUserCity(userCity);
-                           user.setUserState(userState);
-                           user.setUserSport(userSport);
+                        Log.v("no", dataSnapshot.toString());
+                        userRef.child("userSport").setValue(userSport);
+                        userRef.child("userCity").setValue(userCity);
+                        userRef.child("userState").setValue(userState);
+                    }
 
-                           userObj.getRef().updateChildren(user.toMap());
-                       }
-
-                        /*userRef.orderByChild("userEmail").equalTo(email).addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                                if (dataSnapshot.getValue() == null) {
-                                    Toast.makeText(CSportActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    String userKey = dataSnapshot.getKey();
-                                    userRef.child(userKey).child("userSport").setValue(userSport);
-                                    userRef.child(userKey).child("userCity").setValue(userCity);
-                                    userRef.child(userKey).child("userState").setValue(userState);
-                                }
-
-                           }
-
-                 @Override
-                  public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                 }
-
-                          @Override
-                          public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                         }
-
-                         @Override
-                        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                             }
-
-                            @Override
-                         public void onCancelled(DatabaseError databaseError) {
-
-                           }
-                        });*/
-                   }
-
-                   @Override
+                    @Override
                     public void onCancelled(DatabaseError databaseError) {
 
-                       }
-                 });
-                //goToCSport();
+                    }
+                });
+
+                Intent intentParty = new Intent(this, SetTimeActivity.class);
+                this.startActivity(intentParty);
+
             }
 
 
         }
+
     }
 
-    public void goToCSport() {
-        Intent intentgoToSettings = new Intent(this, SetTimeActivity.class);
-        this.startActivity(intentgoToSettings);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -184,7 +143,7 @@ public class CSportActivity extends Activity implements View.OnClickListener {
             this.startActivity(intentMenuHome);}
 
         else if (item.getItemId() == R.id.settings){
-            Intent intentMenuAddInventory = new Intent (this, OverviewActivity.class);
+            Intent intentMenuAddInventory = new Intent (this, CSportActivity.class);
             this.startActivity(intentMenuAddInventory);}
 
         else if (item.getItemId() == R.id.logout){

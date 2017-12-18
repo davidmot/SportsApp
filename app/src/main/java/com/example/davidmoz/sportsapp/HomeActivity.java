@@ -8,10 +8,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 public class HomeActivity extends Activity implements View.OnClickListener {
 
     private Button buttonChangeSettings;
+    private TextView textViewHello, textViewLocation1, textViewSport1, textViewTime1;
 
 
     @Override
@@ -21,6 +34,38 @@ public class HomeActivity extends Activity implements View.OnClickListener {
 
         buttonChangeSettings=(Button)findViewById(R.id.buttonChangeSettings);
         buttonChangeSettings.setOnClickListener(this);
+
+        textViewLocation1=(TextView)findViewById(R.id.textViewLocation1);
+        textViewHello=(TextView)findViewById(R.id.textViewHello);
+        textViewSport1=(TextView)findViewById(R.id.textViewSport1);
+        textViewTime1=(TextView)findViewById(R.id.textViewTime1);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final String userProfile = user.getUid().toString();
+
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference userRef = db.getReference().child(userProfile);
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User userData = dataSnapshot.getValue(User.class);
+                textViewHello.setText("Hello  "+userData.userFirstName+" !");
+                textViewSport1.setText(userData.userSport);
+                textViewLocation1.setText(userData.userCity+" , "+userData.userState);
+                textViewTime1.setText(userData.userStartTime+":00 to "+userData.userEndTime);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
 
     }
 

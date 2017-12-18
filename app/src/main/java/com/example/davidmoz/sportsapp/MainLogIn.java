@@ -79,7 +79,9 @@ public class MainLogIn extends Activity implements View.OnClickListener {
         if (v.getId() == buttonLogin.getId()) {
             if (email.equals("") || password.equals("")) {
                 Toast.makeText(MainLogIn.this,"Please Fill out Email and Password", Toast.LENGTH_SHORT).show();
-            } else {signIn(email, password);}
+            } else {signIn(email, password);
+
+            }
 
         } else if (v.getId() == buttonRegister.getId()) {
             if (email.equals("")) {
@@ -108,38 +110,11 @@ public class MainLogIn extends Activity implements View.OnClickListener {
     }
 
     public void goToMenu() {
-        Intent intentgoMenu = new Intent(this, HomeActivity.class);
-        this.startActivity(intentgoMenu);
-
-        Intent intentgoCSport = new Intent(this, CSportActivity.class);
+        Intent intentgoCSport = new Intent(this, HomeActivity.class);
         String email = editTextEmail.getText().toString();
         intentgoCSport.putExtra("email",email);
+        this.startActivity(intentgoCSport);
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuHome = getMenuInflater();
-        menuHome.inflate(R.menu.mainmenu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.home) {
-            Intent intentMenuHome = new Intent(this, HomeActivity.class);
-            this.startActivity(intentMenuHome);}
-
-        else if (item.getItemId() == R.id.settings){
-            Intent intentMenuAddInventory = new Intent (this, CSportActivity.class);
-            this.startActivity(intentMenuAddInventory);}
-
-        else if (item.getItemId() == R.id.logout){
-            Intent intentMenuInventoryCheck = new Intent (this, MainLogIn.class);
-            this.startActivity(intentMenuInventoryCheck);}
-
-        return super.onOptionsItemSelected(item);
-    }
 }
